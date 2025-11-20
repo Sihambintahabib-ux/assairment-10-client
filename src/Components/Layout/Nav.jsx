@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import MyContainer from "./MyContainer";
@@ -38,6 +38,21 @@ const Nav = () => {
     logout();
   };
 
+  //*theam code :
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (e) => {
+    setTheme(e ? "dark" : "light");
+  };
+
+  //*
+
   const resigter = (
     <>
       <li>
@@ -45,6 +60,17 @@ const Nav = () => {
       </li>
       <li>
         <NavLink to="/signup">Signup</NavLink>
+      </li>
+      <li>
+        {/* <label className="label font-bold text-md text-black ">
+          Theam Toggle
+        </label>{" "}
+        <input
+        // onChange={}
+        // type="checkbox"
+        // defaultChecked={localStorage.getItem("theme") === "dark"}
+        // className="toggle"
+        /> */}
       </li>
     </>
   );
@@ -76,7 +102,7 @@ const Nav = () => {
             {links}
           </ul>
         </div>
-        <a className="btn border-none   text-xl">
+        <a className="btn border-none  text-xl">
           BuyGoods<span className="text-red-500">BD</span>
         </a>
       </div>
@@ -87,7 +113,7 @@ const Nav = () => {
         {user ? (
           <div className=" space-x-2 p-1 m-5">
             {" "}
-            <a className="btn border-none">{user.displayName}</a>
+            <span className="btn border-none m-1 ">{user.displayName}</span>
             <a className="btn border-none" onClick={handlelogout}>
               logout
             </a>
@@ -95,6 +121,16 @@ const Nav = () => {
         ) : (
           <div className="  list-none flex gap-5 p-1 m-5 ">{resigter}</div>
         )}
+      </div>
+      <div>
+        {/* <label className="label font-bold  text-black ">Theam Toggle</label>{" "} */}
+        <input
+          onChange={(e) => handleTheme(e.target.checked)} // value
+          type="checkbox"
+          defaultChecked={localStorage.getItem("theme") === "dark"}
+          className="toggle border-2 "
+        />
+        {/* <input type="checkbox" defaultChecked className="toggle border" /> */}
       </div>
     </div>
   );

@@ -4,7 +4,8 @@ import { AuthContext } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 import Main from "../Layout/Main";
 import { Link } from "react-router";
-import NewMain from "../Layout/NewMain";
+import ExportMain from "../Layout/ExportMain";
+import ImportMain from "../Layout/ImportMain";
 
 const Imports = () => {
   const { user } = use(AuthContext);
@@ -22,28 +23,6 @@ const Imports = () => {
       });
   }, [user]);
 
-  // useEffect(() => {
-  //   fetch(
-  //     `http://localhost:5000/my-import?email=${user.email}`
-  //     // fetch(`http://localhost:5000/allimportsproducts/${importProducts._id}`,
-  //     // {
-  //     //   method: "POST",
-  //     //   headers: { "content-type": "application/json" },
-  //     //   body: JSON.stringify({
-  //     //     importProducts,
-  //     //   }),
-  //     // }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // toast.success("Signup successful");
-  //       setimportProducts(data);
-  //       console.log(data, "user after save");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, [user]);
   console.log(importProducts);
   return (
     <MyContainer>
@@ -51,7 +30,7 @@ const Imports = () => {
         {importProducts.price}
         <div>
           {importProducts.map((data, _id) => (
-            <NewMain key={_id} data={data}></NewMain>
+            <ImportMain key={_id} data={data}></ImportMain>
           ))}
         </div>
       </div>

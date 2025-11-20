@@ -22,9 +22,7 @@ const Main = ({ data }) => {
       <div className="card-body">
         <h2 className="card-title">
           {productName}
-          <div className="badge badge-secondary bg-amber-100 p-5 ">
-            {category}
-          </div>
+          <div className="  p-5 badge badge-secondary ">{category}</div>
         </h2>
         <p>{description}</p>
         <div className="card-actions justify-between">
@@ -37,7 +35,7 @@ const Main = ({ data }) => {
             <div className="badge badge-outline">{rating}</div>
           </div>
         </div>
-        <div className=" btn w-full text-center font-bold ">
+        <div className=" btn bg-orange-600 w-full text-center font-bold ">
           <Link to={`/productsdetails/${_id}`}> Details</Link>
         </div>
       </div>

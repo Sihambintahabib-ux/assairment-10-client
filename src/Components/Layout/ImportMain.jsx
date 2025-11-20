@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, Links, NavLink } from "react-router";
 
-const NewMain = ({ data }) => {
+const ImportMain = ({ data }) => {
   //   console.log(data);
+
   return (
     <div>
       <ul className="list bg-base-100 rounded-box shadow-md">
@@ -35,8 +36,12 @@ const NewMain = ({ data }) => {
             </div>
           </div>
           <div className="space-x-4 px-2">
-            <button className="btn">Delete</button>
-            <button className="btn">Update</button>
+            <NavLink to="" className="btn">
+              Delete
+            </NavLink>
+            <NavLink to={`/UpdateImport/${data.productID}`} className="btn">
+              Update
+            </NavLink>
             {/* <div> */}
             <Link
               to={`/productsdetails/${data.productID}`}
@@ -52,4 +57,4 @@ const NewMain = ({ data }) => {
   );
 };
 
-export default NewMain;
+export default ImportMain;

@@ -1,25 +1,31 @@
-import React, { use, useRef } from "react";
-import { Link, useLoaderData } from "react-router";
+import React, { use, useEffect, useRef } from "react";
+import { Link, useLoaderData, useParams } from "react-router";
 import MyContainer from "../Layout/MyContainer";
 import { AuthContext } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
 
 const ProductsDetails = () => {
   // const { productName } = datas;
-  const data = useLoaderData();
   // const { _id } = useLoaderData();
-  const { user } = use(AuthContext);
-  const res = data.result;
-  console.log("result : ", { res });
+  //* data load by using params-loader
+  // const data = useLoaderData();
+  // const { user } = use(AuthContext);
+  // const res = data.result;
+  // console.log("result : ", { res });
   const modelref = useRef(null);
+  
+  const {id} =useParams()
+  useEffect(()=>{
+  fetch(`http://localhost:5000/products/${params.id}`),
+  },[])
 
-  const hadlemodal = (e) => {
-    e.preventDefault();
+  const hadlemodal = () => {
+    // e.preventDefault();
     modelref.current.showModal();
   };
-
-  const handleclose = () => {
-    // e.preventDefault();
+  const handleclose = (e) => {
+    e.preventDefault();
+    modelref.current.close();
   };
   const handleimportform = (e) => {
     e.preventDefault();
@@ -64,48 +70,11 @@ const ProductsDetails = () => {
         console.log(err);
       });
     // *
-    // const displayName = e.target.name?.value;
-    // const email = e.target.email?.value;
-    // const quantity = e.target.quantity?.value;
-    // console.log("hi", { displayName, email, quantity });
   };
-  // const handleimport = (e) => {
-  //   e.preventDefault();
-  //   // *
-  //   // fetch("http://localhost:5000/products", {
-  //   //   method: "POST",
-  //   //   headers: { "content-type": "application/json" },
-  //   //   body: JSON.stringify({ ...res, importedBy: user.email }),
-  //   // })
-  //   //   .then((res) => res.json())
-  //   //   .then((data) => {
-  //   //     toast.success("Signup successful");
 
-  //   //     console.log(data, "user after save");
-  //   //   })
-  //   //   .catch((err) => {
-  //   //     console.log(err);
-  //   //   });
-  //   // *
-  //   const displayName = e.target.name?.value;
-  //   const email = e.target.email?.value;
-  //   const quantity = e.target.quantity?.value;
-  //   console.log("hi", { displayName, email, quantity, _id });
-  // };
   return (
     <>
       <MyContainer>
-        {/* <div>ProductsDetails </div>
-        <div>{res.productName}</div>
-        <img src={res.productImage} alt={res.productName} />
-        <span>{res.price}</span>
-        <p>{res.originCountry}</p>
-        <p>{res.rating}</p>
-        <p>{res.availableQuantity}</p>
-        <p>{res.description}</p>
-        <p>{res.category}</p>
-        <p>{res.createdAt}</p> */}
-        {/* <Link to="">import now</Link> */}
         <div className="card lg:card-side bg-base-100 shadow-sm">
           <figure>
             <img src={res?.productImage} alt={res?.productName} />
@@ -126,7 +95,6 @@ const ProductsDetails = () => {
             </div>
           </div>
         </div>
-        {/* Open the modal using document.getElementById('ID').showModal() method */}
 
         <dialog ref={modelref} className="modal modal-bottom sm:modal-middle ">
           <div className="modal-box bg-white space-y-3">

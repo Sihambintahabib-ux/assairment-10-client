@@ -1,9 +1,11 @@
 import React, { use } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 const Exportsrouts = () => {
   const { user } = use(AuthContext);
+  const navigate = useNavigate();
   const handlexport = (e) => {
     e.preventDefault();
     console.log("handlexport");
@@ -14,7 +16,7 @@ const Exportsrouts = () => {
       originCountry: e.target.country?.value,
       rating: e.target.rating?.value,
       availableQuantity: e.target.quantity?.value,
-      description: "",
+      description: e.target.description?.value,
       category: "",
       createdBy: user.email,
       createdAt: new Date(),
@@ -27,8 +29,8 @@ const Exportsrouts = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Signup successful");
-
+        toast.success("export successful");
+        navigate("/export");
         console.log(data, "user after save");
       })
       .catch((err) => {
@@ -59,6 +61,14 @@ const Exportsrouts = () => {
                   className="input"
                   placeholder="Product Name"
                 />
+                <label className="label">description</label>
+                <input
+                  name="description"
+                  // defaultValue={res.description}
+                  type="text"
+                  className="input"
+                  placeholder="Product Image"
+                />
                 <label className="label">Product Image</label>
                 <input
                   name="image"
@@ -69,7 +79,7 @@ const Exportsrouts = () => {
                 <label className="label">Price</label>
                 <input
                   name="price"
-                  type="number"
+                  type="text"
                   className="input"
                   placeholder="Price"
                 />
@@ -83,14 +93,14 @@ const Exportsrouts = () => {
                 <label className="label">Rating</label>
                 <input
                   name="rating"
-                  type="number"
+                  type="text"
                   className="input"
                   placeholder=" Rating"
                 />
                 <label className="label">Available quantity</label>
                 <input
                   name="quantity"
-                  type="number"
+                  type="text"
                   className="input"
                   placeholder=" Available quantity"
                 />

@@ -3,7 +3,7 @@ import { AuthContext } from "../../Context/AuthContext";
 // import { toast } from "react-toastify";
 import Main from "../Layout/Main";
 import MyContainer from "../Layout/MyContainer";
-import NewMain from "../Layout/NewMain";
+import ExportMain from "../Layout/ExportMain";
 // Exports;
 const Exports = () => {
   const { user } = use(AuthContext);
@@ -20,13 +20,16 @@ const Exports = () => {
         console.log(err);
       });
   }, [user]);
+  console.log(exportProducts);
   return (
     <MyContainer>
       <div>
         {/* <div className="grid grid-cols-1 md:grid-cols-3 space-y-5"> */}
         <div>
           {exportProducts.map((data) => (
-            <NewMain key={data._id} data={data}></NewMain>
+            <ExportMain key={data._id} data={data}></ExportMain>
+
+            // <p> {data.productName}</p>
           ))}
         </div>
       </div>

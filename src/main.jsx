@@ -16,12 +16,15 @@ import Imports from "./Components/page/Imports.jsx";
 import Exportsrouts from "./Components/page/Exportsrouts.JSX";
 import PrivateRoute from "./Context/PrivateRoute.jsx";
 import { ToastContainer } from "react-toastify";
+import UpdateImport from "./Components/page/UpdateImport.jsx";
+import UpdateExport from "./Components/page/UpdateExport.jsx";
+import Forgetpassword from "./Components/page/Forgetpassword.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-
+    errorElement: <p>error found</p>,
     children: [
       {
         index: true,
@@ -44,9 +47,11 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       // { path: "productsdetails", Component: ProductsDetails },
       { path: "/signup", Component: Signup },
       { path: "/login", Component: Login },
+      { path: "/forgetpassword", Component: Forgetpassword },
       {
         path: "/exportsrouts",
         element: (
@@ -69,6 +74,28 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Imports></Imports>
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "/updateImport/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateImport></UpdateImport>
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "/updateExport/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateExport></UpdateExport>
           </PrivateRoute>
         ),
       },

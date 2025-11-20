@@ -3,4 +3,7 @@
   themes: light-default;
   --color-primary: purple;
   --color-secondary: teal;
+  themes: light --default, dark --prefersdark;
 }
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
