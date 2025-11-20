@@ -1,8 +1,45 @@
 import React from "react";
-import { Link, Links, NavLink } from "react-router";
+import { Link, Links, NavLink, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const ImportMain = ({ data }) => {
   //   console.log(data);
+  //*
+  const navigate = useNavigate();
+  console.log(data);
+  const handledelete = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/my-import/${data._id}`, {
+          method: "DELETE",
+          headers: { "content-type": "application/json" },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+            // navigate("/");
+            console.log(data, "user after save");
+          })
+          .catch((err) => {
+            console.log(err.message);
+          });
+      }
+    });
+  };
+
+  //*
 
   return (
     <div>
@@ -36,9 +73,12 @@ const ImportMain = ({ data }) => {
             </div>
           </div>
           <div className="space-x-4 px-2">
-            <NavLink to="" className="btn">
+            {/* <NavLink to="" className="btn">
               Delete
-            </NavLink>
+            </NavLink> */}
+            <button onClick={handledelete} className="btn">
+              Delete
+            </button>
             <NavLink to={`/UpdateImport/${data.productID}`} className="btn">
               Update
             </NavLink>

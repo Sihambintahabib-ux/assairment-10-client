@@ -1,23 +1,37 @@
-import React, { use, useEffect, useRef } from "react";
-import { Link, useLoaderData, useParams } from "react-router";
+// import React, { use, useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router";
+// import { Link, useLoaderData, useParams } from "react-router";
 import MyContainer from "../Layout/MyContainer";
 import { AuthContext } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
+import Loading from "../Layout/Loading";
 
 const ProductsDetails = () => {
   // const { productName } = datas;
   // const { _id } = useLoaderData();
   //* data load by using params-loader
   // const data = useLoaderData();
-  // const { user } = use(AuthContext);
+  const { user, loading } = use(AuthContext);
   // const res = data.result;
   // console.log("result : ", { res });
   const modelref = useRef(null);
-  
-  const {id} =useParams()
-  useEffect(()=>{
-  fetch(`http://localhost:5000/products/${params.id}`),
-  },[])
+
+  //* data load by using useEffect
+  const { id } = useParams();
+  const [res, setres] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/products/${id}`)
+      .then((result) => result.json())
+      .then((data) => {
+        setres(data.result);
+        toast.success("user details");
+        // console.log(data, "user after save");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
   const hadlemodal = () => {
     // e.preventDefault();
@@ -71,6 +85,10 @@ const ProductsDetails = () => {
       });
     // *
   };
+
+  if (loading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <>
