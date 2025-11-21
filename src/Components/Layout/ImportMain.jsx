@@ -29,7 +29,7 @@ const ImportMain = ({ data }) => {
               text: "Your file has been deleted.",
               icon: "success",
             });
-            // navigate("/");
+            navigate("/allproducts");
             console.log(data, "user after save");
           })
           .catch((err) => {
@@ -79,9 +79,9 @@ const ImportMain = ({ data }) => {
             <button onClick={handledelete} className="btn">
               Delete
             </button>
-            <NavLink to={`/UpdateImport/${data.productID}`} className="btn">
+            {/* <NavLink to={`/UpdateImport/${data.productID}`} className="btn">
               Update
-            </NavLink>
+            </NavLink> */}
             {/* <div> */}
             <Link
               to={`/productsdetails/${data.productID}`}

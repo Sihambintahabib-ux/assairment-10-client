@@ -20,12 +20,14 @@ const ProductsDetails = () => {
   //* data load by using useEffect
   const { id } = useParams();
   const [res, setres] = useState([]);
+
+  //details : get
   useEffect(() => {
     fetch(`http://localhost:5000/products/${id}`)
       .then((result) => result.json())
       .then((data) => {
         setres(data.result);
-        toast.success("user details");
+        // toast.success("user details");
         // console.log(data, "user after save");
       })
       .catch((err) => {
@@ -41,6 +43,7 @@ const ProductsDetails = () => {
     e.preventDefault();
     modelref.current.close();
   };
+
   const handleimportform = (e) => {
     e.preventDefault();
     const displayName = e.target.name?.value;
@@ -48,37 +51,40 @@ const ProductsDetails = () => {
     const quantity = e.target.quantity?.value;
     console.log("hi", { displayName, email, quantity });
     const importQuantity = parseInt(quantity);
-    // *
+    // const availableQuantity = parseInt(availableQuantity);
 
+    // *
     const importData = {
       productName: res.productName,
       productImage: res.productImage,
       price: res.price,
       originCountry: res.originCountry,
       rating: res.rating,
-      availableQuantity: res.availableQuantity,
+      // availableQuantity: res.availableQuantity,
       description: res.description,
       category: res.category,
-      createdBy: user.email,
-      createdAt: new Date(),
+      // createdBy: user.email,
+      // createdAt: new Date(),
       importedBy: user.email,
       importedQuantity: importQuantity,
-      productID: res._id,
+      // productID: res._id,
     };
-    console.log("data----", importData);
-
+    // console.log("data----", importData);
     // *
     // *
     fetch(`http://localhost:5000/allimportsproducts/${res._id}`, {
-      method: "PUT",
+      method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(importData),
       // { res, importedBy: user.email, importquantity: quantity }
     })
       .then((result) => result.json())
       .then((data) => {
-        toast.success("import successful");
+        toast.success("import successful from allimports");
         console.log(data, "user after save");
+        if (data.result.insertedId) {
+          modelref.current.close();
+        }
       })
       .catch((err) => {
         console.log(err);

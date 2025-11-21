@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { useLoaderData } from "react-router";
+import { Navigate, useLoaderData, useNavigate } from "react-router";
 import MyContainer from "../Layout/MyContainer";
 import { AuthContext } from "../../Context/AuthContext";
 import { toast } from "react-toastify";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 const UpdateExport = () => {
   const data = useLoaderData();
   const { user } = use(AuthContext);
+  const navigate = useNavigate();
 
   const res = data.result;
   console.log(res);
@@ -73,6 +74,8 @@ const UpdateExport = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        navigate("/export");
+
         toast.success("update successful");
 
         console.log(data, "user after save");
@@ -149,7 +152,7 @@ const UpdateExport = () => {
                 placeholder=" category"
               />
 
-              <button className="btn btn-neutral mt-4">Login</button>
+              <button className="btn btn-neutral mt-4">update export</button>
             </fieldset>
           </form>
         </div>

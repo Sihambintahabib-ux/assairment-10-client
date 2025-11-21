@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import MyContainer from "../Layout/MyContainer";
 import { AuthContext } from "../../Context/AuthContext";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import Main from "../Layout/Main";
 import { Link } from "react-router";
 import ExportMain from "../Layout/ExportMain";
@@ -14,7 +14,7 @@ const Imports = () => {
     fetch(`http://localhost:5000/my-import?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        toast.success("import successful");
+        // toast.success("import successful");
         console.log(data, "user after save");
         setimportProducts(data);
       })

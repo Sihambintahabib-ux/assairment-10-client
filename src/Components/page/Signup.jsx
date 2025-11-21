@@ -102,12 +102,12 @@ const Signup = () => {
   };
   // loging navigation
   const { user } = use(AuthContext);
-  const location = useLocation();
+  // const location = useLocation();
   // const from = location.state || "/";
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   if (user) {
-    // navigate("/");
+    navigate("/");
     // navigate(`${location.state ? location.state : "/"}`);
     return;
   }

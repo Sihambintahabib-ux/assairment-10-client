@@ -17,7 +17,7 @@ const Exportsrouts = () => {
       rating: e.target.rating?.value,
       availableQuantity: e.target.quantity?.value,
       description: e.target.description?.value,
-      category: "",
+      category: e.target.category?.value,
       createdBy: user.email,
       createdAt: new Date(),
     };
@@ -67,7 +67,7 @@ const Exportsrouts = () => {
                   // defaultValue={res.description}
                   type="text"
                   className="input"
-                  placeholder="Product Image"
+                  placeholder="description"
                 />
                 <label className="label">Product Image</label>
                 <input
@@ -96,6 +96,14 @@ const Exportsrouts = () => {
                   type="text"
                   className="input"
                   placeholder=" Rating"
+                />
+                <label className="label">category</label>
+                <input
+                  name="category"
+                  // defaultValue={res.description}
+                  type="text"
+                  className="input"
+                  placeholder="category"
                 />
                 <label className="label">Available quantity</label>
                 <input
