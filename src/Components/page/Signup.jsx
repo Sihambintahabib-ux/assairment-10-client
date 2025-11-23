@@ -2,8 +2,10 @@ import React, { use, useState } from "react";
 // import { createUserWithEmailAndPassword } from "firebase/auth";
 // import { auth } from "../firebase.config";
 import { toast } from "react-toastify";
-import { data, Link, useLocation, useNavigate } from "react-router";
-import { getAuth, updateProfile } from "firebase/auth";
+import { Link, useNavigate } from "react-router";
+// import { data, Link, useLocation, useNavigate } from "react-router";
+import { updateProfile } from "firebase/auth";
+// import { getAuth, updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Context/AuthContext";
 import MyContainer from "../Layout/MyContainer";
 import { auth } from "../../Firebase/Firebase.config";
@@ -15,6 +17,8 @@ import { auth } from "../../Firebase/Firebase.config";
 // signinwithpassword :
 const Signup = () => {
   const [passwordError, setpasswordError] = useState("");
+  // const location = useLocation();
+
   // const { createUser_Email, setuser , updateProfile} = use(AuthContext);
   const { createUser_Email, setuser, signinwithGoogle } = use(AuthContext);
 
@@ -113,6 +117,8 @@ const Signup = () => {
   }
   return (
     <MyContainer>
+      <title> Products -signup</title>
+
       <div className="text-center text-2xl font-bold ">
         <h1>Signup</h1>
       </div>

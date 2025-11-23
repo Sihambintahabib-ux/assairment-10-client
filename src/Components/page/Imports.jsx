@@ -11,6 +11,7 @@ const Imports = () => {
   const { user } = use(AuthContext);
   const [importProducts, setimportProducts] = useState([]);
   useEffect(() => {
+    document.title = "Import - Import Export Hub";
     fetch(`http://localhost:5000/my-import?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {

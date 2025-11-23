@@ -30,6 +30,7 @@ const AllProducts = () => {
   return (
     <MyContainer>
       <div>
+        <title> Products -all Import Export Hub</title>
         <div className="text-center text-3xl font-bold pb-6">All Products</div>
         <form
           onSubmit={handlesearch}

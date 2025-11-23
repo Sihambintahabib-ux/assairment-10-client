@@ -23,6 +23,7 @@ const ProductsDetails = () => {
 
   //details : get
   useEffect(() => {
+    document.title = "Products Details - Import Export Hub";
     fetch(`http://localhost:5000/products/${id}`)
       .then((result) => result.json())
       .then((data) => {
@@ -80,8 +81,9 @@ const ProductsDetails = () => {
     })
       .then((result) => result.json())
       .then((data) => {
-        toast.success("import successful from allimports");
         console.log(data, "user after save");
+        toast.success("import successful from allimports");
+
         if (data.result.insertedId) {
           modelref.current.close();
         }

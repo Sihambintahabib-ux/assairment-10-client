@@ -63,6 +63,8 @@ const Login = () => {
 
   return (
     <MyContainer>
+      <title> Products -login</title>
+
       <div className="text-center text-2xl font-bold ">
         <h1>Loging</h1>
       </div>

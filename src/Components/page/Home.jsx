@@ -9,6 +9,7 @@ const Home = () => {
   return (
     <MyContainer>
       <div>
+        <title> Products - Home</title>
         {/* <div>banner carasol</div> */}
         <div className="grid grid-cols-1 md:grid-cols-3 space-y-5">
           {datas.map((data) => (
