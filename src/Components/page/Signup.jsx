@@ -43,7 +43,14 @@ const Signup = () => {
           body: JSON.stringify(newuser),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data, "user after save"));
+          .then(
+            (data) => console.log(data, "user after save")
+            // {
+            // location.reload();
+            // toast.success("signup success");
+
+            // }
+          );
         // .catch((err) => {
         //   console.log(err);
         // });
@@ -51,7 +58,7 @@ const Signup = () => {
       //*
       .catch((err) => {
         console.log(err);
-        toast.err(e.message);
+        toast.err(err.message);
       });
     console.log("hello");
   };

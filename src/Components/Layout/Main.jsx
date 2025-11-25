@@ -1,4 +1,5 @@
 import React from "react";
+import { CiStar } from "react-icons/ci";
 import { Link } from "react-router";
 
 const Main = ({ data }) => {
@@ -28,11 +29,16 @@ const Main = ({ data }) => {
         <div className="card-actions justify-between">
           <div className="card-actions justify-between">
             <div className="badge badge-outline">{originCountry}</div>
-            <div className="badge badge-outline">{availableQuantity}</div>
+            <div className="badge badge-outline">
+              Quanty {availableQuantity}
+            </div>
           </div>
           <div className="card-actions justify-between">
-            <div className="badge badge-outline">{price}</div>
-            <div className="badge badge-outline">{rating}</div>
+            <div className="badge badge-outline">${price}</div>
+            <div className="badge badge-outline">
+              {rating}
+              <CiStar></CiStar>
+            </div>
           </div>
         </div>
         <div className=" btn bg-orange-600 w-full text-center font-bold ">

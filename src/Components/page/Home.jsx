@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router";
 import Main from "../Layout/Main";
 import MyContainer from "../Layout/MyContainer";
+import Slider from "../Layout/Slider";
 
 const Home = () => {
   const datas = useLoaderData();
@@ -11,6 +12,7 @@ const Home = () => {
       <div>
         <title> Products - Home</title>
         {/* <div>banner carasol</div> */}
+        <Slider datas={datas}></Slider>
         <div className="grid grid-cols-1 md:grid-cols-3 space-y-5">
           {datas.map((data) => (
             <Main key={data._id} data={data}></Main>

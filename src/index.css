@@ -7,3 +7,7 @@
 }
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+a.active {
+  @apply underline  rounded-sm;
+}

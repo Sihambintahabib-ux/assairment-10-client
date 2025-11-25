@@ -15,7 +15,7 @@ const Exportsrouts = () => {
       price: e.target.price?.value,
       originCountry: e.target.country?.value,
       rating: e.target.rating?.value,
-      availableQuantity: e.target.quantity?.value,
+      availableQuantity: parseInt(e.target.quantity?.value),
       description: e.target.description?.value,
       category: e.target.category?.value,
       createdBy: user.email,
@@ -79,7 +79,7 @@ const Exportsrouts = () => {
                 <label className="label">Price</label>
                 <input
                   name="price"
-                  type="text"
+                  type="number"
                   className="input"
                   placeholder="Price"
                 />
@@ -108,9 +108,11 @@ const Exportsrouts = () => {
                 <label className="label">Available quantity</label>
                 <input
                   name="quantity"
-                  type="text"
+                  type="number"
+                  min="0"
                   className="input"
                   placeholder=" Available quantity"
+                  required
                 />
 
                 <button className="btn btn-neutral mt-4">Login</button>

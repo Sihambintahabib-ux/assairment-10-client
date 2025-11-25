@@ -10,9 +10,14 @@ import ImportMain from "../Layout/ImportMain";
 const Imports = () => {
   const { user } = use(AuthContext);
   const [importProducts, setimportProducts] = useState([]);
+
   useEffect(() => {
+    // if (!user?.email) {
+    //   console.log("⚠️ No user logged in");
+    //   return;
+    // }
     document.title = "Import - Import Export Hub";
-    fetch(`http://localhost:5000/my-import?email=${user.email}`)
+    fetch(`http://localhost:5000/my-import?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // toast.success("import successful");
@@ -22,7 +27,7 @@ const Imports = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [user]);
+  }, [user?.email]);
 
   console.log(importProducts);
   return (

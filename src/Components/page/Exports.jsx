@@ -9,8 +9,12 @@ const Exports = () => {
   const { user } = use(AuthContext);
   const [exportProducts, setexportProducts] = useState([]);
   useEffect(() => {
+    // if (!user?.email) {
+    //   console.log("⚠️ No user logged in");
+    //   return;
+    // }
     document.title = "Export - Import Export Hub";
-    fetch(`http://localhost:5000/my-export?email=${user.email}`)
+    fetch(`http://localhost:5000/my-export?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // toast.success("Signup successful");
@@ -20,7 +24,7 @@ const Exports = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [user]);
+  }, [user?.email]);
   console.log(exportProducts);
   return (
     <MyContainer>

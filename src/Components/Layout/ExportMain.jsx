@@ -63,9 +63,9 @@ const ExportMain = ({ data }) => {
                 {" "}
                 <p>availableQuantity : {data.availableQuantity}</p>
               </button>
-              <button className="">
+              {/* <button className="">
                 <p>importquantity : {data.importedQuantity}</p>
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="space-x-4 px-2">

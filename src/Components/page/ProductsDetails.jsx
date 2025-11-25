@@ -23,6 +23,10 @@ const ProductsDetails = () => {
 
   //details : get
   useEffect(() => {
+    // if (!user?.email) {
+    //   console.log("⚠️ No user logged in");
+    //   return;
+    // }
     document.title = "Products Details - Import Export Hub";
     fetch(`http://localhost:5000/products/${id}`)
       .then((result) => result.json())
@@ -34,7 +38,7 @@ const ProductsDetails = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [id]);
+  }, [id, user?.email]);
 
   const hadlemodal = () => {
     // e.preventDefault();
@@ -61,7 +65,7 @@ const ProductsDetails = () => {
       price: res.price,
       originCountry: res.originCountry,
       rating: res.rating,
-      // availableQuantity: res.availableQuantity,
+      availableQuantity: parseInt(res.availableQuantity) || 0,
       description: res.description,
       category: res.category,
       // createdBy: user.email,
@@ -84,8 +88,9 @@ const ProductsDetails = () => {
         console.log(data, "user after save");
         toast.success("import successful from allimports");
 
-        if (data.result.insertedId) {
+        if (data.success) {
           modelref.current.close();
+          e.target.reset();
         }
       })
       .catch((err) => {
@@ -156,6 +161,8 @@ const ProductsDetails = () => {
                   name="quantity"
                   type="number"
                   className="input"
+                  max={res?.availableQuantity}
+                  min="1"
                   placeholder="Add quantity to import products "
                 />
                 <button
