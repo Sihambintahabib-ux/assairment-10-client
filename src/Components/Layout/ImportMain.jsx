@@ -77,7 +77,7 @@ const ImportMain = ({ data }) => {
               Delete
             </NavLink> */}
             <button onClick={handledelete} className="btn">
-              Delete
+              Remove
             </button>
             {/* <NavLink to={`/UpdateImport/${data.productID}`} className="btn">
               Update

@@ -27,7 +27,7 @@ const Nav = () => {
         {/* <NavLink to="/import">My Imports</NavLink> */}
       </li>
       <li>
-        <NavLink to="/exportsrouts">Add Export routes</NavLink>
+        <NavLink to="/exportsrouts">Add Export</NavLink>
       </li>
     </>
   );
@@ -174,7 +174,7 @@ const Nav = () => {
             {!user && (
               <div className="mt-4 space-y-2">
                 <li>
-                  <Link to="/login" className="btn btn-primary btn-sm w-full">
+                  <Link to="/login" className="btn bg-red-500  btn-sm w-full">
                     Login
                   </Link>
                 </li>
