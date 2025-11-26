@@ -3,6 +3,9 @@ import React from "react";
 const Count = () => {
   return (
     <div className="my-30">
+      <h1 className="text-center text-3xl font-extrabold pb-5 ">
+        Our Achivement
+      </h1>
       <section className="py-12 bg-orange-500 text-white">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>

@@ -91,7 +91,7 @@ const ExportMain = ({ data }) => {
       <ul className="list bg-base-100 rounded-box shadow-md">
         <li className="list-row flex-col sm:flex-row items-start sm:items-center gap-4 p-4">
           {/* Product Image */}
-          <div className="w-full sm:w-32 sm:flex-shrink-0">
+          <div className="w-full sm:w-32">
             <img
               className="w-10 h-10 sm:w-32 sm:h-32 rounded-md object-cover"
               src={data.productImage}
@@ -128,10 +128,10 @@ const ExportMain = ({ data }) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col md:flex-row flew-row gap-2 w-full sm:w-auto sm:space-y-2">
+          <div className="flex flex-col md:flex-row  gap-2 w-full sm:w-auto sm:space-y-2">
             <button
               onClick={handledelete}
-              className="btn btn-sm sm:btn-md btn-error flex-1 sm:flex-initial"
+              className=" bg-black text-white btn btn-sm sm:btn-md flex-1 sm:flex-initial"
             >
               Delete
             </button>
@@ -143,7 +143,7 @@ const ExportMain = ({ data }) => {
             </NavLink>
             <Link
               to={`/productsdetails/${data._id}`}
-              className="btn btn-sm sm:btn-md btn-primary flex-1 sm:flex-initial"
+              className="btn btn-sm sm:btn-md btn-error flex-1 sm:flex-initial"
             >
               Details
             </Link>
