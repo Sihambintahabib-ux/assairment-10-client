@@ -68,7 +68,7 @@ const Login = () => {
       <div className="text-center text-2xl font-bold ">
         <h1>Loging</h1>
       </div>
-      <div className="bg-gray-100 w-1/2  mx-auto rounded-md p-5 m-5 space-y-5">
+      <div className="bg-gray-100 w-2/3  mx-auto rounded-md p-5 m-5 space-y-5">
         <form onSubmit={handleloging} className="card-body">
           <fieldset className="flex flex-col justify-center   gap-4">
             {/* email */}
