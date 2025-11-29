@@ -108,9 +108,9 @@ const ExportMain = ({ data }) => {
               <div className="text-xs uppercase font-semibold opacity-60">
                 {data.category}
               </div>
-              <p className="text-xs sm:text-sm py-2 line-clamp-2">
+              {/* <p className="text-xs sm:text-sm py-2 line-clamp-2">
                 {data.description}
-              </p>
+              </p> */}
             </div>
 
             {/* Product Info */}

@@ -60,7 +60,7 @@ const Login = () => {
     // navigate(`${location.state ? location.state : "/"}`);
     return;
   }
-
+  //
   return (
     <MyContainer>
       <title> Products -login</title>
@@ -68,7 +68,7 @@ const Login = () => {
       <div className="text-center text-2xl font-bold ">
         <h1>Loging</h1>
       </div>
-      <div className="bg-gray-100 w-2/3  mx-auto rounded-md p-5 m-5 space-y-5">
+      <div className="bg-gray-100 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2  mx-auto rounded-md p-5 m-5 space-y-5">
         <form onSubmit={handleloging} className="card-body">
           <fieldset className="flex flex-col justify-center   gap-4">
             {/* email */}
@@ -112,11 +112,11 @@ const Login = () => {
                   Google Loging
                 </button>
               </div>
-              <div>
-                Dont have a Account ?
+              <div className="flex flex-row  justify-between w-full items-center text-center flex-wrap ">
+                <p className=" "> Dont have a Account ?</p>
                 <Link
                   to="/signup"
-                  className="p-2 px-5 bg-white w-full rounded-md my-3 mx-5"
+                  className="p-2 px-5 bg-white rounded-md w-full my-3 mx-5"
                 >
                   Signup
                 </Link>

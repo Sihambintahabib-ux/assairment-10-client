@@ -129,7 +129,7 @@ const ProductsDetails = () => {
 
                 {/* Price & Rating */}
                 <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                  <span className="text-3xl sm:text-4xl font-bold text-red-600">
+                  <span className="text-3xl sm:text-4xl font-bold text-orange-600">
                     ${res?.price}
                   </span>
                   <div className="flex items-center gap-1 bg-yellow-100 px-3 py-1 rounded-full">
@@ -254,7 +254,7 @@ const ProductsDetails = () => {
                 <div className="flex flex-col sm:flex-row gap-3 pt-4 sm:pt-6">
                   <button
                     onClick={hadlemodal}
-                    className="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
+                    className="flex-1 bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
                   >
                     Import Product
                   </button>

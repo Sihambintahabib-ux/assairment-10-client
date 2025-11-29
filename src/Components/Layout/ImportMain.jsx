@@ -115,9 +115,6 @@ const ImportMain = ({ data }) => {
               <div className="text-xs uppercase font-semibold opacity-60">
                 {data.category}
               </div>
-              <p className="text-xs sm:text-sm py-2 line-clamp-2">
-                {data.description}
-              </p>
             </div>
 
             {/* Product Info */}
@@ -135,6 +132,12 @@ const ImportMain = ({ data }) => {
                 Imported: {data.importedQuantity}
               </span>
             </div>
+
+            {/* <div>
+              <p className="text-xs sm:text-sm py-2 line-clamp-2">
+                {data.description}
+              </p>
+            </div> */}
           </div>
 
           {/* Action Buttons */}

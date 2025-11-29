@@ -179,10 +179,7 @@ const Nav = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    to="/register"
-                    className="btn btn-outline btn-sm w-full"
-                  >
+                  <Link to="/signup" className="btn btn-outline btn-sm w-full">
                     Register
                   </Link>
                 </li>
@@ -276,7 +273,7 @@ const Nav = () => {
               <Link to="/login" className="btn bg-red-500 btn-sm">
                 Login
               </Link>
-              <Link to="/register" className="btn btn-outline btn-sm">
+              <Link to="/signup" className="btn btn-outline btn-sm">
                 Register
               </Link>
             </div>
