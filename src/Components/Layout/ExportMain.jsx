@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const ExportMain = ({ data }) => {
   const navigate = useNavigate();
-  console.log(data);
+  // console.log(data);
   const handledelete = () => {
     Swal.fire({
       title: "Are you sure?",

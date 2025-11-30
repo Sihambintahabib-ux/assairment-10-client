@@ -21,6 +21,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         setuser(res.user);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
         console.log(err);
@@ -43,7 +44,7 @@ const Login = () => {
         // Signed in
         // const user = res.user;
         toast.success("Signed in successful.");
-        //  navigate(`${location.state ? location.state : "/"}`);
+        navigate(`${location.state ? location.state : "/"}`);
 
         // ...
       })
@@ -55,11 +56,11 @@ const Login = () => {
       });
   };
 
-  if (user) {
-    navigate("/");
-    // navigate(`${location.state ? location.state : "/"}`);
-    return;
-  }
+  // if (user) {
+  //   navigate("/");
+  //   // navigate(`${location.state ? location.state : "/"}`);
+  //   return;
+  // }
   //
   return (
     <MyContainer>

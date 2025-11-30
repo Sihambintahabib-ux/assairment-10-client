@@ -50,6 +50,7 @@ const ProductsDetails = () => {
   };
 
   const handleimportform = (e) => {
+    console.log(e);
     e.preventDefault();
     const displayName = e.target.name?.value;
     const email = e.target.email?.value;
