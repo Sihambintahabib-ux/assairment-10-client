@@ -105,6 +105,7 @@ const Signup = () => {
         // console.log(setuser);
         console.log("gdgdg", res);
         toast.success("Signup successful");
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((e) => {
         console.log(e);

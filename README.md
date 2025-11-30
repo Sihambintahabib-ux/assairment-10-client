@@ -172,14 +172,17 @@ surge dist
   **custom domain create process** :
   - create a folder in public folder and name it : `CNAME` , put the url : `sihambintahabib-assairment.surge.sh`
 
-### React_route + Firebase : ✅
+### React_route + Firebase : ✅✅
 
 ---
 
+- `npm install --global surge`
 - for **\_react_route + firebase**
 - add a `_redirects` file in public folder , write this in the file : `/* /index.html 200`
 - Run `npm run build` to add the `_redirects` file in `dist` folder
 - copy `index.html` code and paste to `200.html` in `dist` folder
+- Deploy `surge dist`
+- optional : create a folder in public folder and name it : `CNAME` , put the url : `sihambintahabib-assairment.surge.sh`
 
 ---
 
@@ -312,3 +315,9 @@ git repo link : https://github.com/Sihambintahabib-ux/assairment-10-server.git
 live link : https://assairment10.vercel.app/
 
 ## https://vercel.com/sihams-projects-0a3f7554/assairment10
+
+client git repo: https://github.com/Sihambintahabib-ux/assairment-10-client.git
+live link : https://sihambintahabib-assairment10.surge.sh/
+server git repo: https://github.com/Sihambintahabib-ux/assairment-10-server.git
+
+Code For Counting Ass-10 on 60 Marks : (marks60)-ass10#inc-ExM25
