@@ -16,7 +16,7 @@ const ExportMain = ({ data }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/products/${data._id}`, {
+        fetch(`https://assairment10.vercel.app/products/${data._id}`, {
           method: "DELETE",
           headers: { "content-type": "application/json" },
         })

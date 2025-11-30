@@ -30,7 +30,7 @@ const UpdateExport = () => {
   //     createdAt: new Date(),
   //   };
   //   //*
-  //   fetch("http://localhost:5000/products", {
+  //   fetch("https://assairment10.vercel.app/products", {
   //     method: "POST",
   //     headers: { "content-type": "application/json" },
   //     body: JSON.stringify(formdata),
@@ -67,7 +67,7 @@ const UpdateExport = () => {
     };
     console.log(formdata);
     //*
-    fetch(`http://localhost:5000/products/${res._id}`, {
+    fetch(`https://assairment10.vercel.app/products/${res._id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(formdata),

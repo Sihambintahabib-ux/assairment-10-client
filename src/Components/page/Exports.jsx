@@ -14,7 +14,7 @@ const Exports = () => {
     //   return;
     // }
     document.title = "Export - Import Export Hub";
-    fetch(`http://localhost:5000/my-export?email=${user?.email}`)
+    fetch(`https://assairment10.vercel.app/my-export?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // toast.success("Signup successful");

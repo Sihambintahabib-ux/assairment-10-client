@@ -37,7 +37,7 @@ const Signup = () => {
           // password: res.user.password,
         };
         //*
-        fetch("http://localhost:5000/users", {
+        fetch("https://assairment10.vercel.app/users", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(newuser),

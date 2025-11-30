@@ -28,7 +28,7 @@ const ProductsDetails = () => {
     //   return;
     // }
     document.title = "Products Details - Import Export Hub";
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://assairment10.vercel.app/products/${id}`)
       .then((result) => result.json())
       .then((data) => {
         setres(data.result);
@@ -59,6 +59,8 @@ const ProductsDetails = () => {
     const importQuantity = parseInt(quantity);
     // const availableQuantity = parseInt(availableQuantity);
 
+    //https://assairment10.vercel.app/
+
     // *
     const importData = {
       productName: res.productName,
@@ -78,7 +80,7 @@ const ProductsDetails = () => {
     // console.log("data----", importData);
     // *
     // *
-    fetch(`http://localhost:5000/allimportsproducts/${res._id}`, {
+    fetch(`https://assairment10.vercel.app/allimportsproducts/${res._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(importData),

@@ -29,17 +29,17 @@ const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
-        loader: () => fetch("http://localhost:5000/latest-products"),
+        loader: () => fetch("https://assairment10.vercel.app/latest-products"),
       },
       {
         path: "/allproducts",
         Component: AllProducts,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("https://assairment10.vercel.app/products"),
       },
       {
         path: "/productsdetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://assairment10.vercel.app/products/${params.id}`),
 
         element: (
           <PrivateRoute>
@@ -81,7 +81,7 @@ const router = createBrowserRouter([
       {
         path: "/updateImport/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://assairment10.vercel.app/products/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateImport></UpdateImport>
@@ -92,7 +92,7 @@ const router = createBrowserRouter([
       {
         path: "/updateExport/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://assairment10.vercel.app/products/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateExport></UpdateExport>

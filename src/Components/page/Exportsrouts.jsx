@@ -22,7 +22,7 @@ const Exportsrouts = () => {
       createdAt: new Date(),
     };
     //*
-    fetch("http://localhost:5000/products", {
+    fetch("https://assairment10.vercel.app/products", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(formdata),

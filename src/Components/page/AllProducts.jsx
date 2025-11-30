@@ -15,7 +15,7 @@ const AllProducts = () => {
     console.log(search_text);
     setloading(true);
 
-    fetch(`http://localhost:5000/search?search=${search_text}`)
+    fetch(`https://assairment10.vercel.app/search?search=${search_text}`)
       .then((result) => result.json())
       .then((data) => {
         toast.success("search successful");

@@ -17,7 +17,7 @@ const Imports = () => {
     //   return;
     // }
     document.title = "Import - Import Export Hub";
-    fetch(`http://localhost:5000/my-import?email=${user?.email}`)
+    fetch(`https://assairment10.vercel.app/my-import?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // toast.success("import successful");
@@ -55,7 +55,7 @@ export default Imports;
 //   const { user } = use(AuthContext);
 //   const [importProducts, setimportProducts] = useState([]);
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/my-import?email=${user.email}`)
+//     fetch(`https://assairment10.vercel.app/my-import?email=${user.email}`)
 //       .then((res) => res.json())
 //       .then((data) => {
 //         toast.success("Signup successful");
