@@ -29,6 +29,9 @@ const Nav = () => {
       <li>
         <NavLink to="/exportsrouts">Add Export</NavLink>
       </li>
+      <li>
+        <NavLink to="/dashboard">dashboard</NavLink>
+      </li>
     </>
   );
 

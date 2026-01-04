@@ -78,6 +78,7 @@ const Login = () => {
               className="border p-2 "
               type="email"
               name="email"
+              defaultValue="abc@gmail.com"
               required
               id=""
             />
@@ -87,6 +88,7 @@ const Login = () => {
               className="border p-2 "
               type="password"
               name="password"
+              defaultValue="abc@gmail.com"
               id=""
               required
             />{" "}

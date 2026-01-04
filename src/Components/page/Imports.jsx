@@ -17,7 +17,7 @@ const Imports = () => {
     //   return;
     // }
     document.title = "Import - Import Export Hub";
-    fetch(`https://assairment10.vercel.app/my-import?email=${user?.email}`)
+    fetch(`${import.meta.env.VITE_API_URL}/my-import?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // toast.success("import successful");

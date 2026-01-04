@@ -18,7 +18,7 @@ const ImportMain = ({ data }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://assairment10.vercel.app/my-import/${data._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/my-import/${data._id}`, {
           method: "DELETE",
           headers: { "content-type": "application/json" },
         })

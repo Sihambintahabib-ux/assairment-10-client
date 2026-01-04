@@ -9,6 +9,7 @@ import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Context/AuthContext";
 import MyContainer from "../Layout/MyContainer";
 import { auth } from "../../Firebase/Firebase.config";
+import { imageUpload, saveOrUpdateUser } from "./Utility";
 // import app from "../firebase.config";
 
 // const auth = getAuth(app);
@@ -27,17 +28,18 @@ const Signup = () => {
     signinwithGoogle()
       .then((res) => {
         // console.log(res);
-        console.log(res.user);
-        console.log(res.users);
+        // console.log(res.user);
+        // console.log(res.users);
         setuser(res.user);
         const newuser = {
           displayName: res.user.displayName,
           email: res.user.email,
           photoURL: res.user.photoURL,
+          role: "member",
           // password: res.user.password,
         };
         //*
-        fetch("https://assairment10.vercel.app/users", {
+        fetch(`${import.meta.env.VITE_API_URL}/user`, {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(newuser),
@@ -60,14 +62,20 @@ const Signup = () => {
         console.log(err);
         toast.err(err.message);
       });
+
     console.log("hello");
   };
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    // const { photoURL } = res;
+    // var imgfile = photoURL[0];
+    // const imgURL = imageUpload(imgfile);
     const displayName = e.target.name?.value;
-    const photoURL = e.target.photourl?.value;
+    // const photoURL = e.target.photourl?.value;
+    const photoFile = e.target.photourl?.files[0]; //! img imgbb : // Get the actual file
     const email = e.target.email?.value;
     const password = e.target.password?.value;
+
     // createUserWithEmailAndPassword(auth, email, password);
     // password error handal
     if (password.length < 6) {
@@ -83,19 +91,65 @@ const Signup = () => {
 
     // console.log("sign up done", { displayName, photoURL, email, password });
 
+    //*  img imgbb :
+    let photoURL = "";
+    if (photoFile) {
+      // toast.info("Uploading image...");
+      photoURL = await imageUpload(photoFile); //! ADD async to handleSignup functon or clicked button function
+      console.log("Image uploaded:", photoURL);
+    }
+    //*  img imgbb END
     createUser_Email(email, password)
       .then((res) => {
+        // const { photoURL } = res;
+        // var imgfile = photoURL[0];
+        // const imgURL = imageUpload(imgfile);
+        console.log("res----", res);
+        const newuser = {
+          // displayName: res.user.displayName,
+          displayName: displayName, // ✅ Use form input, not res.user.displayName
+          email: res.user.email,
+          // photoURL: imgURL,
+          // photoURL: res.user.photoURL,
+          photoURL: photoURL, // ✅ Use uploaded URL, not res.user.photoURL
+          role: "member",
+          // password: res.user.password,
+        };
+        //*
+
+        console.log(import.meta.env.VITE_API_URL);
+        fetch(`${import.meta.env.VITE_API_URL}/user`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(newuser),
+        })
+          .then((res) => res.json())
+          .then(
+            (data) => console.log(data, "user after save")
+            // {
+            // location.reload();
+            // toast.success("signup success");
+
+            // }
+          )
+          .catch((err) => {
+            console.log(err);
+            // toast.err(err.message);
+          });
+        //*
         const user = res.user;
         updateProfile(auth.currentUser, {
           displayName: displayName,
           photoURL: photoURL,
+          role: "member",
         })
-          .then((res) => {
-            console.log(res);
+          .then(() => {
+            // console.log(res);
             setuser({
               ...user,
               displayName: displayName,
               photoURL: photoURL,
+              role: "member",
             });
           })
           .catch((error) => {
@@ -118,11 +172,11 @@ const Signup = () => {
   // const from = location.state || "/";
   const navigate = useNavigate();
 
-  if (user) {
-    navigate("/");
-    // navigate(`${location.state ? location.state : "/"}`);
-    return;
-  }
+  // if (user) {
+  //   navigate("/");
+  //   // navigate(`${location.state ? location.state : "/"}`);
+  //   return;
+  // }
   return (
     <MyContainer>
       <title> Products -signup</title>
@@ -150,9 +204,10 @@ const Signup = () => {
             {/* photourl */}
             <label className="text-2xl font-bold">photourl</label>
             <input
-              type="text"
+              type="file"
               name="photourl"
               className="border"
+              placeholder="- "
               id=""
               required
             />{" "}

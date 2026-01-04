@@ -67,7 +67,7 @@ const UpdateExport = () => {
     };
     console.log(formdata);
     //*
-    fetch(`https://assairment10.vercel.app/products/${res._id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/products/${res._id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(formdata),

@@ -16,7 +16,7 @@ const Home = () => {
         {/*banner carasol */}
         <Slider datas={datas}></Slider>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 space-y-5 gap-3">
           {datas.map((data) => (
             <Main key={data._id} data={data}></Main>
           ))}

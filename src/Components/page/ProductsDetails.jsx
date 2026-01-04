@@ -28,7 +28,7 @@ const ProductsDetails = () => {
     //   return;
     // }
     document.title = "Products Details - Import Export Hub";
-    fetch(`https://assairment10.vercel.app/products/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/products/${id}`)
       .then((result) => result.json())
       .then((data) => {
         setres(data.result);
@@ -80,7 +80,7 @@ const ProductsDetails = () => {
     // console.log("data----", importData);
     // *
     // *
-    fetch(`https://assairment10.vercel.app/allimportsproducts/${res._id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/allimportsproducts/${res._id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(importData),
