@@ -1,34 +1,30 @@
-// import React, { use } from 'react';
 import { use, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import MyContainer from "../Layout/MyContainer";
 import { AuthContext } from "../../Context/AuthContext";
+import { FaGoogle, FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 
 const Login = () => {
   const [error, setError] = useState("");
-  // const { createUser_Email, setuser,  } = use(AuthContext);
-
-  const { signin, setuser, signinwithGoogle } = use(AuthContext);
-  const { user } = use(AuthContext);
+  const { signin, setuser, signinwithGoogle, user } = use(AuthContext);
   const location = useLocation();
-  // const from = location.state || "/";
   const navigate = useNavigate();
-  //* DEMO_CREDENTIALS
+
   const DEMO_CREDENTIALS = {
-    email: "demo@importhub.com",
-    password: "Demo123",
+    email: "abc@gmail.com",
+    password: "abc@gmail.com",
   };
+
   const handleDemouser = (e) => {
     e.preventDefault();
-
     document.querySelector('input[name="email"]').value =
       DEMO_CREDENTIALS.email;
     document.querySelector('input[name="password"]').value =
       DEMO_CREDENTIALS.password;
     signin(DEMO_CREDENTIALS.email, DEMO_CREDENTIALS.password);
   };
-  //*google login :
+
   const handleloginWithGoogle = (e) => {
     e.preventDefault();
     signinwithGoogle()
@@ -39,115 +35,198 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
-        toast.err(e.message);
+        toast.error(err.message);
       });
-    console.log("hello");
   };
-  //*password login :
+
   const handleloging = (e) => {
     e.preventDefault();
-    console.log("handleloging");
-    // const displayName = e.target.name?.value;
-    // const photoURL = e.target.photo?.value;
     const email = e.target.email?.value;
     const password = e.target.password?.value;
-    console.log(e.target);
-    console.log("sign up done", { email, password });
+
     signin(email, password)
       .then(() => {
-        // Signed in
-        // const user = res.user;
-        toast.success("Signed in successful.");
+        toast.success("Signed in successfully!");
         navigate(`${location.state ? location.state : "/"}`);
-
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        // const errorMessage = error.message;
-        toast.error("error happened!  Sign-in incomplete", errorCode);
-        setError(errorCode); // console.log({ errorCode, errorMessage });
+        toast.error("Sign-in failed: " + errorCode);
+        setError(errorCode);
       });
   };
 
-  // if (user) {
-  //   navigate("/");
-  //   // navigate(`${location.state ? location.state : "/"}`);
-  //   return;
-  // }
-  //
   return (
     <MyContainer>
-      <title> Products -login</title>
+      <title>Products - Login</title>
 
-      <div className="text-center text-2xl font-bold ">
-        <h1>Loging</h1>
-      </div>
-      <div className="bg-gray-100 w-full sm:w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2  mx-auto rounded-md p-5 m-5 space-y-5">
-        <form onSubmit={handleloging} className="card-body">
-          <fieldset className="flex flex-col justify-center   gap-4">
-            {/* email */}
-            <label className="text-2xl font-bold">Email</label>
-            <input
-              className="border p-2 "
-              type="email"
-              name="email"
-              // defaultValue="abc@gmail.com"
-              required
-              id=""
-            />
-            {/* password */}
-            <label className="text-2xl font-bold">Password</label>
-            <input
-              className="border p-2 "
-              type="password"
-              name="password"
-              // defaultValue="abc@gmail.com"
-              id=""
-              required
-            />{" "}
-            {error && <p className="text-red-400 text-xs">{error}</p>}
-            <div className="flex flex-col justify-center  items-center">
-              <NavLink to="/forgetpassword">
-                <button className="link link-hover text-blue-800">
-                  FORGET PASSWORD
-                </button>
-              </NavLink>
-              <button
-                className="p-2 bg-black text-white w-full rounded-md my-3"
-                type="submit"
-              >
-                Loging
-              </button>
-              <span>or</span>
-              <div className="flex gap-5 ">
-                <button
-                  onClick={handleloginWithGoogle}
-                  type="submit"
-                  className="p-2 px-5 bg-white w-full rounded-md my-3"
+      <div className="min-h-screen flex items-center justify-center py-12 px-4">
+        <div className="w-full max-w-md">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-800 mb-2">
+              Welcome Back
+            </h1>
+            <p className="text-gray-600">Sign in to continue to ImportHub</p>
+          </div>
+
+          {/* Demo User Info Card */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0">
+                <svg
+                  className="w-5 h-5 text-blue-600 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
                 >
-                  Google Loging
-                </button>
-                <button
-                  onClick={handleDemouser}
-                  type="submit"
-                  className="p-2 px-5 bg-white w-full rounded-md my-3"
-                >
-                  Demo user
-                </button>
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                    clipRule="evenodd"
+                  />
+                </svg>
               </div>
-              <div className="flex flex-row  justify-between w-full items-center text-center flex-wrap ">
-                <p className=" "> Dont have a Account ?</p>
-                <Link
-                  to="/signup"
-                  className="p-2 px-5 bg-white rounded-md w-full my-3 mx-5"
-                >
-                  Signup
-                </Link>
+              <div className="flex-1">
+                <h3 className="text-sm font-semibold text-blue-900 mb-1">
+                  Try Demo Account
+                </h3>
+                <div className="text-xs text-blue-700 space-y-0.5">
+                  <p className="font-medium">Email: {DEMO_CREDENTIALS.email}</p>
+                  <p className="font-medium">
+                    Password: {DEMO_CREDENTIALS.password}
+                  </p>
+                </div>
               </div>
             </div>
-          </fieldset>
-        </form>
+          </div>
+
+          {/* Login Card */}
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <form onSubmit={handleloging} className="space-y-6">
+              {/* Email Input */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <FaEnvelope className="text-gray-400" />
+                  </div>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    placeholder="Enter your email"
+                  />
+                </div>
+              </div>
+
+              {/* Password Input */}
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <FaLock className="text-gray-400" />
+                  </div>
+                  <input
+                    type="password"
+                    name="password"
+                    required
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                    placeholder="Enter your password"
+                  />
+                </div>
+              </div>
+
+              {/* Error Message */}
+              {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
+              {/* Forgot Password Link */}
+              <div className="flex justify-end">
+                <NavLink
+                  to="/forgetpassword"
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Forgot Password?
+                </NavLink>
+              </div>
+
+              {/* Login Button */}
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-orange-600 to-red-900 text-white font-semibold py-3 rounded-lg hover:from-red-900 hover:to-orange-600 transform transition hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Sign In
+              </button>
+
+              {/* Divider */}
+              <div className="relative flex items-center my-6">
+                <div className="flex-grow border-t border-gray-300"></div>
+                <span className="flex-shrink mx-4 text-gray-500 text-sm font-medium">
+                  OR
+                </span>
+                <div className="flex-grow border-t border-gray-300"></div>
+              </div>
+
+              {/* Alternative Login Buttons */}
+              <div className="space-y-3">
+                {/* Google Login */}
+                <button
+                  onClick={handleloginWithGoogle}
+                  type="button"
+                  className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-300 text-gray-700 font-semibold py-3 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition"
+                >
+                  <FaGoogle className="text-red-500 text-lg" />
+                  Continue with Google
+                </button>
+
+                {/* Demo User Button */}
+                <button
+                  onClick={handleDemouser}
+                  type="button"
+                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 transform transition hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <FaUser className="text-lg" />
+                  Try Demo Account
+                </button>
+              </div>
+            </form>
+
+            {/* Sign Up Link */}
+            <div className="mt-8 text-center">
+              <p className="text-gray-600">
+                Don't have an account?{" "}
+                <Link
+                  to="/signup"
+                  className="text-blue-600 hover:text-blue-700 font-semibold"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <div className="text-center mt-6">
+            <p className="text-sm text-gray-500">
+              By signing in, you agree to our{" "}
+              <a href="#" className="text-blue-600 hover:underline">
+                Terms
+              </a>{" "}
+              and{" "}
+              <a href="#" className="text-blue-600 hover:underline">
+                Privacy Policy
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
     </MyContainer>
   );

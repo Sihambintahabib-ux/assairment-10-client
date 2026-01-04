@@ -31,7 +31,11 @@ const UpdateData = ({ setIsEditModalOpen, isOpen, data, refetch }) => {
               Update Plant Info
             </DialogTitle>
             <div className="mt-2 w-full">
-              <UpdatePlantForm data={data} refetch={refetch} />
+              <UpdatePlantForm
+                data={data}
+                refetch={refetch}
+                setIsEditModalOpen={setIsEditModalOpen}
+              />
             </div>
           </DialogPanel>
         </div>
