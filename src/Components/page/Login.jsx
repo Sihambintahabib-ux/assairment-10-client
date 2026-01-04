@@ -14,6 +14,20 @@ const Login = () => {
   const location = useLocation();
   // const from = location.state || "/";
   const navigate = useNavigate();
+  //* DEMO_CREDENTIALS
+  const DEMO_CREDENTIALS = {
+    email: "demo@importhub.com",
+    password: "Demo123",
+  };
+  const handleDemouser = (e) => {
+    e.preventDefault();
+
+    document.querySelector('input[name="email"]').value =
+      DEMO_CREDENTIALS.email;
+    document.querySelector('input[name="password"]').value =
+      DEMO_CREDENTIALS.password;
+    signin(DEMO_CREDENTIALS.email, DEMO_CREDENTIALS.password);
+  };
   //*google login :
   const handleloginWithGoogle = (e) => {
     e.preventDefault();
@@ -78,7 +92,7 @@ const Login = () => {
               className="border p-2 "
               type="email"
               name="email"
-              defaultValue="abc@gmail.com"
+              // defaultValue="abc@gmail.com"
               required
               id=""
             />
@@ -88,7 +102,7 @@ const Login = () => {
               className="border p-2 "
               type="password"
               name="password"
-              defaultValue="abc@gmail.com"
+              // defaultValue="abc@gmail.com"
               id=""
               required
             />{" "}
@@ -113,6 +127,13 @@ const Login = () => {
                   className="p-2 px-5 bg-white w-full rounded-md my-3"
                 >
                   Google Loging
+                </button>
+                <button
+                  onClick={handleDemouser}
+                  type="submit"
+                  className="p-2 px-5 bg-white w-full rounded-md my-3"
+                >
+                  Demo user
                 </button>
               </div>
               <div className="flex flex-row  justify-between w-full items-center text-center flex-wrap ">

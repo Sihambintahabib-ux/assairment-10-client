@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../Context/useAuth";
 import LoadingSpinner from "../../LoadingSpinner";
 import ErrorPage from "../../ErrorPage";
+import MemberStatisticsRECHART from "./MemberStatisticsRECHART.jsx";
 
 const MemberStatistics = () => {
   // const axiosSecure = useAxiosSecure();
@@ -71,7 +72,7 @@ const MemberStatistics = () => {
               </h4>
             </div>
           </div> */}
-          {/* Total clubs */}
+          {/* Total imports */}
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-linear-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-blue-600 to-blue-400 text-white shadow-blue-500/40`}
@@ -80,7 +81,7 @@ const MemberStatistics = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Total clubs
+                Total imports
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                 {memberStats.imports}
@@ -103,7 +104,7 @@ const MemberStatistics = () => {
               </h4>
             </div>
           </div> */}
-          {/* Total events */}
+          {/* Total products export */}
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-linear-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-green-600 to-green-400 text-white shadow-green-500/40`}
@@ -112,7 +113,7 @@ const MemberStatistics = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Total events
+                Total export
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                 {memberStats.products}
@@ -120,7 +121,7 @@ const MemberStatistics = () => {
             </div>
           </div>
           {/* upcomming events */}
-          <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+          {/* <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-linear-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-green-600 to-green-400 text-white shadow-green-500/40`}
             >
@@ -128,13 +129,13 @@ const MemberStatistics = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                Upcomming events{" "}
+               {" "}
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
                 {memberStats.total}
               </h4>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
           {/*Sales Bar Chart */}

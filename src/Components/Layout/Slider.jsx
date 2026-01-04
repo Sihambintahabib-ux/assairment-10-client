@@ -1,5 +1,6 @@
 import React from "react";
 import MyContainer from "./MyContainer";
+import { Links, NavLink } from "react-router";
 
 const Slider = ({ datas }) => {
   const {
@@ -93,9 +94,15 @@ const Slider = ({ datas }) => {
             Products - latest trendy
           </h1>
 
-          <button className="btn btn-ghost rounded-full text-base sm:text-lg md:text-xl bg-orange-400 hover:bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4">
+          {/* <button className="btn btn-ghost rounded-full text-base sm:text-lg md:text-xl bg-orange-400 hover:bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4">
             Get started
-          </button>
+          </button> */}
+          <li className="btn btn-ghost rounded-full text-base sm:text-lg md:text-xl bg-orange-400 hover:bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4">
+            <NavLink to="/allproducts">
+              {" "}
+              Get started with Exploring Products
+            </NavLink>
+          </li>
         </div>
 
         {/* Carousel */}

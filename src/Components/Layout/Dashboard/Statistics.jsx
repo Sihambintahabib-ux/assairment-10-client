@@ -3,6 +3,7 @@ import LoadingSpinner from "../LoadingSpinner";
 import AdminStatistics from "./statistics/AdminStatistics";
 import ManagerStatistics from "./statistics/ManagerStatistics";
 import MemberStatistics from "./statistics/MemberStatistics";
+import MemberStatisticsRECHART from "./statistics/MemberStatisticsRECHART.jsx";
 
 const Statistics = () => {
   const [role, isRoleLoading] = useRole();
@@ -11,7 +12,8 @@ const Statistics = () => {
   return (
     <div>
       {/* <AdminStatistics /> */}
-      {role === "member" && <MemberStatistics />}
+      {/* {role === "member" && <MemberStatistics />} */}
+      {role === "member" && <MemberStatisticsRECHART></MemberStatisticsRECHART>}
       {role === "menager" && <ManagerStatistics />}
       {role === "admin" && <AdminStatistics />}
     </div>

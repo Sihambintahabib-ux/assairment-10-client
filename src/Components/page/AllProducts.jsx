@@ -59,9 +59,9 @@ const AllProducts = () => {
           <button className="btn btn-secondary rounded-full ">Search</button>
           {/* </div> */}
         </form>
-        <div className="grid grid-cols-1 md:grid-cols-3 space-y-5 gap-3 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 space-y-5 gap-3 ">
           {loading ? (
-            <p className=" grid grid-cols-12 text-center text-2xl bg-amber-300">
+            <p className=" grid grid-cols-12  text-center text-2xl bg-amber-300">
               loading...
             </p>
           ) : (

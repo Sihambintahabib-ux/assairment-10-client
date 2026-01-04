@@ -19,18 +19,53 @@ const Nav = () => {
         <NavLink to="/productsdetails">products details</NavLink>
         <NavLink to={`/productsdetails/${_id}`}>products details</NavLink>
       </li> */}
+
+      <li>
+        <NavLink to="/exportsrouts">Add Export</NavLink>
+      </li>
+    </>
+  );
+  const Privatelinks = (
+    <>
       <li>
         <NavLink to="/export">My Exports</NavLink>
       </li>
       <li>
         <NavLink to="/my-imports">My Imports</NavLink>
-        {/* <NavLink to="/import">My Imports</NavLink> */}
       </li>
+
+      {/* <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+      </li> */}
       <li>
-        <NavLink to="/exportsrouts">Add Export</NavLink>
-      </li>
-      <li>
-        <NavLink to="/dashboard">dashboard</NavLink>
+        {" "}
+        <div className=" dropdown dropdown-end">
+          <label tabIndex={0} className=" ">
+            {/* <NavLink to="/dashboard">Dashboard</NavLink> */}
+            <p>Dashboard</p>
+
+            {/* <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img
+              src={user.photoURL || "https://via.placeholder.com/150"}
+              alt={user.displayName || "User"}
+            />
+          </div> */}
+          </label>
+          <ul
+            tabIndex={0}
+            className="mt-3 z-10 p-2 shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <NavLink to="/dashboard">Dashboard Overview</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/my-imports">My Imports</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/my-export">My Exports</NavLink>
+            </li>
+          </ul>
+        </div>
       </li>
     </>
   );
@@ -173,8 +208,11 @@ const Nav = () => {
             className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow-lg bg-base-100 rounded-box w-52"
           >
             {links}
+
             {/* Mobile Auth Buttons */}
-            {!user && (
+            {user ? (
+              <div>{Privatelinks}</div>
+            ) : (
               <div className="mt-4 space-y-2">
                 <li>
                   <Link to="/login" className="btn bg-red-500  btn-sm w-full">
@@ -196,12 +234,100 @@ const Nav = () => {
           BuyGoods<span className="text-red-500">BD</span>
         </Link>
       </div>
-
       {/* Desktop Navigation Links */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 space-x-2">{links}</ul>
+        <ul className="menu menu-horizontal px-1 space-x-2">
+          {links}
+          {
+            user && <div className="flex items-center "> {Privatelinks}</div>
+            // : (
+            //   <div className="mt-4 space-y-2">
+            //     <li>
+            //       <Link to="/login" className="btn bg-red-500  btn-sm w-full">
+            //         Login
+            //       </Link>
+            //     </li>
+            //     <li>
+            //       <Link to="/signup" className="btn btn-outline btn-sm w-full">
+            //         Register
+            //       </Link>
+            //     </li>
+            //   </div>
+            // )
+          }
+        </ul>
       </div>
+      {/* //* dashboad navbar */}
+      {/* <div className=" dropdown dropdown-end">
+        <label tabIndex={0} className="btn btn-ghost ">
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <p>Dashboard</p>
 
+          <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <img
+              src={user.photoURL || "https://via.placeholder.com/150"}
+              alt={user.displayName || "User"}
+            />
+          </div>
+        </label>
+        <ul
+          tabIndex={0}
+          className="mt-3 z-10 p-2 shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+        >
+          <li>
+            <NavLink to="/dashboard">Dashboard Overview</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/my-imports">My Imports</NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/my-export">My Exports</NavLink>
+          </li>
+
+          <li>
+            <button onClick={handlelogout} className="text-primary">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
+                      </svg>
+                      Logout
+                    </button>
+            <Link to="/dashboard/profile" className="text-primary">
+              View Profile
+            </Link>
+          </li>
+          <li>
+            <button onClick={handlelogout} className="text-error">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+              Logout
+            </button>
+          </li>
+        </ul>
+      </div> */}
+      {/* //* dashboad navbar */}
       {/* Right Side: Auth + Theme Toggle */}
       <div className="navbar-end">
         <div className="flex items-center gap-2">
@@ -249,6 +375,28 @@ const Nav = () => {
                   tabIndex={0}
                   className="mt-3 z-10 p-2 shadow-lg menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
                 >
+                  <li>
+                    {/* <button onClick={handlelogout} className="text-primary">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                        />
+                      </svg>
+                      Logout
+                    </button> */}
+                    <Link to="/dashboard/profile" className="text-primary">
+                      View Profile
+                    </Link>
+                  </li>
                   <li>
                     <button onClick={handlelogout} className="text-error">
                       <svg

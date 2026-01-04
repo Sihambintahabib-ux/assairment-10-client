@@ -4,12 +4,20 @@ import coverImg from "./cover.jpg";
 
 import useAuth from "../../../../../Context/useAuth";
 import useRole from "../../../../../Context/useRole";
+import { useState } from "react";
+import UpdateData from "./UpdateData";
 
 const Profile = () => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
   const { user } = useAuth();
+  // const { user } = use(AuthContext);
+
   const [role, isRoleLoading] = useRole();
   console.log(role, isRoleLoading);
-
+  const handleupdate = () => {
+    setIsEditModalOpen(true);
+  };
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white shadow-lg rounded-2xl md:w-4/5 lg:w-3/5">
@@ -46,14 +54,23 @@ const Profile = () => {
                 <span className="font-bold text-gray-600 ">{user?.email}</span>
               </p>
 
-              {/* <div>
-                <button className="bg-lime-500  px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800 block mb-1">
+              <div>
+                <button
+                  onClick={handleupdate}
+                  className="bg-lime-500  px-10 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800 block mb-1"
+                >
                   Update Profile
                 </button>
+                <UpdateData
+                  data={user} //*
+                  // refetch={refetch} //*
+                  isOpen={isEditModalOpen}
+                  setIsEditModalOpen={setIsEditModalOpen}
+                ></UpdateData>
                 <button className="bg-lime-500 px-7 py-1 rounded-lg text-white cursor-pointer hover:bg-lime-800">
                   Change Password
                 </button>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
